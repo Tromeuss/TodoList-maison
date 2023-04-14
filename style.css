@@ -1,0 +1,184 @@
+
+
+
+
+
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2C3e50;
+} 
+
+.top
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 50px;
+}
+
+
+.cont_input{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+
+}
+
+.inp {
+    margin: 10px;
+    width: 100%;
+    height: 40px;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid black;
+    outline: none;
+}
+
+.send_btn {
+    height: 30px;
+    margin: 10px;
+}
+
+.contt {
+    width: 60%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.cont_option {
+    margin: 30px;
+    position: relative;
+    display: flex;
+    flex-direction: row; 
+    background: #34495e;
+}
+
+.option {
+    padding: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    animation: all 3s ease-in-out;
+}
+
+
+
+/*-------- animation Option slider---------------- */
+
+.animation {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    z-index: 0;
+    background:rgb(18, 213, 213);
+    border-radius: 8px;
+    transition: all .5s ease 0s;
+}
+
+
+
+.contt .start-toutes,.toutes:focus~.animation {
+    width: 75px;
+    left: 0px;
+}
+
+
+
+.contt .start-faire,.faire:focus~.animation {
+    width: 80px;
+    left: 80px;
+}
+
+
+.contt .start-faite,.faite:focus~.animation {
+    width: 75px;
+    left: 160px;
+}
+
+
+
+/* ---------------------------------*/
+
+
+
+
+
+
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.list {
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    width: 50%;
+    padding: 8px;
+    font-size: 1.5em;
+    background-color: #34495e;
+    color: #fff;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    
+
+}
+
+.fa-trash-can {
+    cursor: pointer;
+    font-size: 0.7em;
+    margin-right: 10px;
+    background-color: red;
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+}
+
+.cont_check {
+    display: flex;
+}
+
+.text {
+    margin-left: 15px;
+}
+
+.chek {
+    height: 15px;
+    width: 15px;
+}
+
+
+.ok {
+    border: 3px solid green;
+}
+
+.fa-check {
+    position: absolute;
+    left: 74%;
+    color: green;
+    font-size: 2em;
+}
+
+.none {
+    display: none;
+}
