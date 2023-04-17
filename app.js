@@ -12,6 +12,40 @@
     const container = document.querySelector('.todo')
     const checkok = document.querySelectorAll('.fa-check')
 
+
+
+async function appel () {
+    try{
+        const r = await fetch("https://jsonplaceholder.typicode.com/posts")
+        if(!r.ok){
+            throw new Error("Erreur serveur...")
+        }
+        return await r.json()
+
+    }catch(e){
+        console.log(e)
+    }
+}
+ 
+
+async function reload () {
+    for(let i = 0; i<3; i++){
+        Add()
+    }
+    const NewText = document.querySelectorAll(".text")
+    try{
+        const data = await appel()
+        for(let i = 0; i<NewText.length; i++){
+            NewText[i].innerHTML = data[i].title
+        }
+    } catch(e){
+        console.log(e)
+    }
+}
+
+
+
+
     function change() {
         const checks = document.querySelectorAll('.chek');
         const checkok = document.querySelectorAll('.fa-check');
@@ -28,30 +62,35 @@
             lists[i].classList.remove('ok');
           }
         }
+        Update()
     }
 
     function aFaire(){
+        const newCheck = document.querySelectorAll('.chek')
+        const newList = document.querySelectorAll(".list")
         rien.classList.add("none")
-        let number = checks.length
+        let number = newCheck.length
         for(let i = 0; i< number; i++){
-            if(checks[i].checked){
-                lists[i].classList.add("none")
+            if(newCheck[i].checked){
+                newList[i].classList.add("none")
             } else {
-                lists[i].classList.remove("none")
+                newList[i].classList.remove("none")
             }
         }
     }
 
 
     function Fait(){
-        let number = checks.length
+        const newCheck = document.querySelectorAll('.chek')
+        const newList = document.querySelectorAll(".list")
+        let number = newCheck.length
         let verif = 0
         for(let i = 0; i< number; i++){
-            if(checks[i].checked){
-                lists[i].classList.remove("none")
+            if(newCheck[i].checked){
+                newList[i].classList.remove("none")
                 verif++
             } else {
-                lists[i].classList.add("none")
+                newList[i].classList.add("none")
             }
             
             if(i >= number-1) {
@@ -64,10 +103,12 @@
     }
 
     function All(){
+        const newCheck = document.querySelectorAll('.chek')
+        const newList = document.querySelectorAll(".list")
         rien.classList.add("none")
-        let number = checks.length
+        let number = newCheck.length
         for(let i = 0; i< number; i++){
-            lists[i].classList.remove("none")
+            newList[i].classList.remove("none")
         }
     }
 
@@ -110,7 +151,8 @@ function Add() {
         lists[i].remove();
         });
     }
-    }
+    Update()
+}
       
 
 
@@ -133,10 +175,19 @@ function Add() {
     }
       
 
+    function Update() {
+        localStorage.setItem('todo', JSON.stringify(lists))
+    }
 
-    faire.addEventListener('click', aFaire)
-    faite.addEventListener('click', Fait)
-    toute.addEventListener('click', All)
+
+
+
+reload()
+
+
+faire.addEventListener('click', aFaire)
+faite.addEventListener('click', Fait)
+toute.addEventListener('click', All)
 
 
 
@@ -155,3 +206,6 @@ function Add() {
           addList();
         }
       })
+
+
+    
